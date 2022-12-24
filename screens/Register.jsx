@@ -126,7 +126,7 @@ const Register = ({ navigation }) => {
           />
         </View>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => navigation.navigate("Otp")}
           style={{
             backgroundColor: "#6C63FF",
             padding: 20,
@@ -164,7 +164,7 @@ const Register = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight,
+    // marginTop: StatusBar.currentHeight,
     backgroundColor: "#fff",
     justifyContent: "center",
   },

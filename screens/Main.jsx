@@ -21,7 +21,7 @@ export default function Main({ navigation }) {
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <Image style={styles.img} source={require("../assets/home.jpg")} />
+          <Image style={styles.img} source={require("../assets/home.png")} />
         </View>
         <Pressable
           android_ripple={true}
@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  txt: { fontSize: 30, marginTop: 30, fontWeight: "bold", color: "coral" },
+  txt: { fontSize: 30, marginTop: 30, fontWeight: "bold", color: "#6C63FF" },
   btn: {
-    backgroundColor: "orange",
+    backgroundColor: "#6C63FF",
     padding: 20,
     width: "90%",
     borderRadius: 5,
@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 50,
   },
-  btnT: { fontWeight: "bold", color: "white", fontSize: 18 },
+  btnT: { fontWeight: "bold", color: "#fff", fontSize: 18 },
   img: { width: 300, height: 300, transform: [{ rotate: "-5deg" }] },
 });

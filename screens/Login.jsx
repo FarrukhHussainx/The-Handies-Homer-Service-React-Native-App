@@ -124,7 +124,7 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight,
+    // marginTop: StatusBar.currentHeight,
     backgroundColor: "#fff",
     justifyContent: "center",
   },
