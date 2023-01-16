@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { Text, AppRegistry } from "react-native";
 import React from "react";
 import Main from "./screens/Main";
 import Login from "./screens/Login";
@@ -44,5 +44,5 @@ const App = () => {
     </OrderState>
   );
 };
-
+AppRegistry.registerComponent("otpApp", () => App);
 export default App;

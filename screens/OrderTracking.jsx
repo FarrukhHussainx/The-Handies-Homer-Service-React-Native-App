@@ -1,6 +1,5 @@
-import { View, Text, SafeAreaView, StatusBar } from "react-native";
+import { View, Text, SafeAreaView, StatusBar, StyleSheet } from "react-native";
 import React from "react";
-import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
 
 export default function OrderTracking() {
   return (
