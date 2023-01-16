@@ -9,11 +9,52 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import React from "react";
+import React, { useState, useContext } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import OrderContext from "./context/OrderContext";
 
 const Login = ({ navigation }) => {
+  const context = useContext(OrderContext);
+  const { getCustomer } = context;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const changeHandlere = (val) => {
+    setEmail(val);
+  };
+  const changeHandlerp = (val) => {
+    setPassword(val);
+  };
+  const handleSubmit = async () => {
+    //e.preventDefault();
+    const url = "http://192.168.18.3:3000/api/user/signin";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
+    if (json.success) {
+      // //redirect
+      // localStorage.setItem("token", json.token);
+      // navigate("/");
+      // tokenUser(json.token);
+      // console.log(json.token);
+      getCustomer(json);
+      navigation.replace("Home");
+    } else {
+      Alert.alert("OOPS!", "Invalid Credentials", [
+        { text: "underStood", onPress: () => console.log("alert called") },
+      ]);
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ padding: 30 }}>
@@ -43,6 +84,7 @@ const Login = ({ navigation }) => {
               paddingVertical: 0,
               fontSize: 18,
             }}
+            onChangeText={changeHandlere}
             keyboardType="email-address"
           />
         </View>
@@ -69,6 +111,7 @@ const Login = ({ navigation }) => {
               paddingVertical: 0,
               fontSize: 18,
             }}
+            onChangeText={changeHandlerp}
             secureTextEntry={true}
           />
           <TouchableOpacity
@@ -84,7 +127,7 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={handleSubmit}
           style={{
             backgroundColor: "#6C63FF",
             padding: 20,
