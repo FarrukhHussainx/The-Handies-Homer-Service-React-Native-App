@@ -17,6 +17,10 @@ import Electrician from "./screens/Electrician";
 import Maid from "./screens/Maid";
 import Carpenter from "./screens/Carpenter";
 import OrderTracking from "./screens/OrderTracking";
+import MyOrders from "./screens/MyOrders";
+import PersonalSetting from "./screens/PersonalSetting";
+import Afterorder from "./screens/Afterorder";
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -24,7 +28,12 @@ const App = () => {
     <OrderState>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {/* <Stack.Screen name="OrderTracking" component={OrderTracking} /> */}
+          <Stack.Screen name="OnbordingScreen" component={OnbordingScreen} />
+          <Stack.Screen name="Afterorder" component={Afterorder} />
+          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="PersonalSetting" component={PersonalSetting} />
+          <Stack.Screen name="MyOrders" component={MyOrders} />
+          <Stack.Screen name="OrderTracking" component={OrderTracking} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Rating" component={RatingPage} />
@@ -33,11 +42,9 @@ const App = () => {
           <Stack.Screen name="Maid" component={Maid} />
           <Stack.Screen name="Carpenter" component={Carpenter} />
 
-          <Stack.Screen name="OnbordingScreen" component={OnbordingScreen} />
           <Stack.Screen name="Main" component={Main} />
           <Stack.Screen name="Order" component={Order} />
 
-          {/* <Stack.Screen name="Register" component={Register} /> */}
           <Stack.Screen name="Otp" component={Otp} />
         </Stack.Navigator>
       </NavigationContainer>

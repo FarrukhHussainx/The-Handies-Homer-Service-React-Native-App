@@ -27,7 +27,7 @@ const Login = ({ navigation }) => {
   };
   const handleSubmit = async () => {
     //e.preventDefault();
-    const url = "http://192.168.18.3:3000/api/user/signin";
+    const url = "http://192.168.43.186:3000/api/user/signin";
     const response = await fetch(url, {
       method: "POST",
       headers: {

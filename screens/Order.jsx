@@ -10,6 +10,8 @@ import {
 import React, { useContext, useState, useEffect } from "react";
 import { Feather } from "@expo/vector-icons";
 import OrderContext from "./context/OrderContext";
+import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function Order({ route, navigation }) {
   const context = useContext(OrderContext);
@@ -20,7 +22,7 @@ export default function Order({ route, navigation }) {
   const [customer_id, setCustomer_id] = useState(customer.user.id);
   const [customerAdress, setCustomerAddress] = useState(customer.user.address);
   const [customerName, setCustomerName] = useState(customer.user.name);
-  const [day, setDay] = useState("Mondary");
+  const [day, setDay] = useState("Monday");
   const [Time, setTime] = useState("Morning");
   const [serviceType, setServiceType] = useState(route.params.serviceType);
   const [price, setPrice] = useState(route.params.price);
@@ -43,6 +45,7 @@ export default function Order({ route, navigation }) {
       price,
       serviceType,
     });
+    navigation.navigate("Afterorder");
   };
 
   return (
@@ -115,6 +118,26 @@ export default function Order({ route, navigation }) {
             <Feather name="check-circle" size={24} color="#fff" />
           </View>
         </SafeAreaView>
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          padding: 8,
+        }}
+      >
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <AntDesign name="home" size={24} color="#6C63FF" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("MyOrders")}>
+          <AntDesign name="shoppingcart" size={24} color="#6C63FF" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("PersonalSetting")}
+        >
+          <FontAwesome5 name="user" size={24} color="#6C63FF" />
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -192,6 +215,7 @@ const styles = StyleSheet.create({
 
     marginVertical: 20,
     left: 100,
+    marginBottom: 80,
   },
   btnT: { fontWeight: "bold", color: "#fff", fontSize: 22 },
   img: { width: 300, height: 300, transform: [{ rotate: "-5deg" }] },

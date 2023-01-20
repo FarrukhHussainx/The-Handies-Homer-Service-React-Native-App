@@ -10,11 +10,63 @@ import {
   Alert,
   ScrollView,
 } from "react-native";
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import OrderContext from "./context/OrderContext";
 
 const Register = ({ navigation }) => {
+  const context = useContext(OrderContext);
+  const { getCustomer } = context;
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
+  const changeHandlere = (val) => {
+    setEmail(val);
+  };
+  const changeHandlern = (val) => {
+    setName(val);
+  };
+  const changeHandlerp = (val) => {
+    setPassword(val);
+  };
+  const changeHandlercp = (val) => {
+    setCpassword(val);
+  };
+  const handleSubmit = async () => {
+    console.log("object id called");
+    //e.preventDefault();
+    const url = "http://192.168.43.186:3000/api/user/create";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        password: password,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
+    if (json.status) {
+      // //redirect
+      // localStorage.setItem("token", json.token);
+      // navigate("/");
+      // tokenUser(json.token);
+      // console.log(json.token);
+      // getCustomer(json);
+      console.log(json._id);
+      navigation.navigate("Otp", { id: json._id });
+    } else {
+      Alert.alert("OOPS!", "Invalid Credentials", [
+        { text: "underStood", onPress: () => console.log("alert called") },
+      ]);
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ padding: 30 }}>
@@ -45,6 +97,7 @@ const Register = ({ navigation }) => {
               paddingVertical: 0,
               fontSize: 18,
             }}
+            onChangeText={changeHandlern}
             keyboardType="default"
           />
         </View>
@@ -70,6 +123,7 @@ const Register = ({ navigation }) => {
               paddingVertical: 0,
               fontSize: 18,
             }}
+            onChangeText={changeHandlere}
             keyboardType="email-address"
           />
         </View>
@@ -96,6 +150,7 @@ const Register = ({ navigation }) => {
               paddingVertical: 0,
               fontSize: 18,
             }}
+            onChangeText={changeHandlerp}
             secureTextEntry={true}
           />
         </View>
@@ -122,11 +177,12 @@ const Register = ({ navigation }) => {
               paddingVertical: 0,
               fontSize: 18,
             }}
+            onChangeText={changeHandlercp}
             secureTextEntry={true}
           />
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Otp")}
+          onPress={handleSubmit}
           style={{
             backgroundColor: "#6C63FF",
             padding: 20,

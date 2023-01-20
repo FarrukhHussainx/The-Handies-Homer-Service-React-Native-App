@@ -307,9 +307,18 @@ export default function Plumber({ navigation }) {
           padding: 8,
         }}
       >
-        <AntDesign name="home" size={24} color="#6C63FF" />
-        <AntDesign name="shoppingcart" size={24} color="#6C63FF" />
-        <FontAwesome5 name="user" size={24} color="#6C63FF" />
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <AntDesign name="home" size={24} color="#6C63FF" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("MyOrders")}>
+          <AntDesign name="shoppingcart" size={24} color="#6C63FF" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("PersonalSetting")}
+        >
+          <FontAwesome5 name="user" size={24} color="#6C63FF" />
+        </TouchableOpacity>
       </View>
     </>
   );

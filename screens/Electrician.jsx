@@ -32,6 +32,7 @@ export default function Electrician({ navigation }) {
               name: item.name,
               _id: item._id,
               serviceType: item.checkbox[0].name,
+              price: item.checkbox[0].price,
             })
           }
         >
@@ -94,6 +95,7 @@ export default function Electrician({ navigation }) {
               name: item.name,
               _id: item._id,
               serviceType: item.checkbox[1].name,
+              price: item.checkbox[1].price,
             })
           }
         >
@@ -155,6 +157,7 @@ export default function Electrician({ navigation }) {
               name: item.name,
               _id: item._id,
               serviceType: item.checkbox[2].name,
+              price: item.checkbox[2].price,
             })
           }
         >
@@ -217,6 +220,7 @@ export default function Electrician({ navigation }) {
               name: item.name,
               _id: item._id,
               serviceType: item.checkbox[3].name,
+              price: item.checkbox[3].price,
             })
           }
         >
@@ -304,9 +308,18 @@ export default function Electrician({ navigation }) {
           padding: 8,
         }}
       >
-        <AntDesign name="home" size={24} color="#6C63FF" />
-        <AntDesign name="shoppingcart" size={24} color="#6C63FF" />
-        <FontAwesome5 name="user" size={24} color="#6C63FF" />
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <AntDesign name="home" size={24} color="#6C63FF" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("MyOrders")}>
+          <AntDesign name="shoppingcart" size={24} color="#6C63FF" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("PersonalSetting")}
+        >
+          <FontAwesome5 name="user" size={24} color="#6C63FF" />
+        </TouchableOpacity>
       </View>
     </>
   );
