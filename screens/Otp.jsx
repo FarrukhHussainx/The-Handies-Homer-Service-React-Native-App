@@ -22,7 +22,7 @@ const Otp = ({ route, navigation }) => {
   const handleSubmit = async () => {
     //e.preventDefault();
     console.log(route.params.id);
-    const url = "http://192.168.43.186:3000/api/user/verify-email";
+    const url = "https://otp-production.up.railway.app/api/user/verify-email";
     const response = await fetch(url, {
       method: "POST",
       headers: {

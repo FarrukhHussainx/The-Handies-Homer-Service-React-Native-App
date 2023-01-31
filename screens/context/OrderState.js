@@ -15,7 +15,7 @@ const OrderState = (props) => {
       //"http://192.168.43.186:5000/api/companies/getallcompanies"
       //"http://192.168.18.3:3000/api/orders/getorders/63b4f2f5c614d4365f75dd6c",
       const reponse = await fetch(
-        "http://192.168.43.186:3000/api/company/gatallcompanies",
+        "https://otp-production.up.railway.app/api/company/gatallcompanies",
         {
           method: "GET",
         }
@@ -33,7 +33,7 @@ const OrderState = (props) => {
       console.log(customer.user.id);
       //"http://192.168.43.186:5000/api/companies/getallcompanies"
       const reponse = await fetch(
-        `http://192.168.43.186:3000/api/orders/getorders/${customer.user.id}`,
+        `https://otp-production.up.railway.app/api/orders/getorders/${customer.user.id}`,
         {
           method: "GET",
         }
@@ -50,7 +50,7 @@ const OrderState = (props) => {
   };
 
   const getOrder = async (item) => {
-    const url = "http://192.168.43.186:3000/api/orders/createorder";
+    const url = "https://otp-production.up.railway.app/api/orders/createorder";
     const response = await fetch(url, {
       method: "POST",
       headers: {

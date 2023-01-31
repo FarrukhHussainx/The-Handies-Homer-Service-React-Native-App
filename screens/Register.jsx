@@ -37,7 +37,7 @@ const Register = ({ navigation }) => {
   const handleSubmit = async () => {
     console.log("object id called");
     //e.preventDefault();
-    const url = "http://192.168.43.186:3000/api/user/create";
+    const url = "https://otp-production.up.railway.app/api/user/create";
     const response = await fetch(url, {
       method: "POST",
       headers: {
